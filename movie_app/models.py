@@ -15,17 +15,19 @@ GENRE_CHOICES = (
 class Movie(models.Model):
     title = models.CharField(max_length = 100)
     description = models.TextField(max_length = 1000)
-    image = models.ImageField(upload_to = 'music')
+    image = models.ImageField(upload_to = 'movie')
     cast = models.CharField(max_length = 500)
-    genre = models.CharField(choices = GENRE_CHOICES, max_length = 40)
-    imdbrating = models.IntegerField(default=0)
+    genre1 = models.CharField(choices = GENRE_CHOICES, max_length = 40)
+    genre2 = models.CharField(choices = GENRE_CHOICES, max_length = 40,blank=True)
+    genre3 = models.CharField(choices = GENRE_CHOICES, max_length = 40,blank=True)
+    imdbrating = models.FloatField(default=0)
 
     slug = models.SlugField(blank = True, null = True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.title)
-        super(Music, self).save(*args, **kwargs)
+        super(Movie, self).save(*args, **kwargs)
 
     def __str__(self):
         return self.title

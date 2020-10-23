@@ -4,12 +4,12 @@ from django.utils import timezone
 # Create your models here.
 
 GENRE_CHOICES = (
-    ('pop', 'POP'),
-    ('electronic', 'ELECTRONIC'),
-    ('bollywood_romantic', 'BOLLYWOOD ROMANTIC'),
-    ('bollywood_singles', 'BOLLYWOOD SINGLES'),
-    ('country', 'COUNTRY'),
-    ('animated', 'ANIMATED MUSIC VIDEO'),
+    ('adventure', 'ADVENTURE'),
+    ('fantasy', 'FANTASY'),
+    ('science_fiction', 'SCIENCE FICTION'),
+    ('action', 'ACTION'),
+    ('comedy', 'COMEDY'),
+    ('romance', 'ROMANCE'),
 )
 
 class Movie(models.Model):
@@ -19,7 +19,7 @@ class Movie(models.Model):
     cast = models.CharField(max_length = 500)
     genre = models.CharField(choices = GENRE_CHOICES, max_length = 40)
     imdbrating = models.IntegerField(default=0)
-    
+
     slug = models.SlugField(blank = True, null = True)
 
     def save(self, *args, **kwargs):

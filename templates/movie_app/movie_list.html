@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+{% block body %}
+
+<main class="content">
+	<section class="centered">
+		{% if movie_genre %}
+			<h3>{{movie_genre | title}} Movies</h3>
+		{% endif %}
+        
+		 <div class="movies">
+			 {% for movie in object_list %}
+			 <div class="mov">
+					<img src="{{movie.image.url}}">
+					<h2 class="movietitle">{{movie.title}}
+						<br><br><p style="font-size:0.8rem">{{movie.genre1}}</p>
+						<br><p style="font-size:0.7rem">{{movie.cast}}</p>
+					</h2>
+				</a>
+			</div>
+			{% empty %}
+			<h3>Opps!! There is no Music in this Category</h3>
+			{% endfor %}
+		</div>
+		{% if is_paginated %}
+			<nav class="pagination">
+				<ul>
+					{% if page_obj.has_previous %}
+						<li><a href="?page= {{ page_obj.previos_page_number }}">Prev</a></li>
+					{% else %}
+						<li class="disabled"></li>
+					{% endif %}
+					{% for pages in page_obj.paginator.page_range %}
+						{% if page_obj.number == pages %}
+							<li><a href="#">{{pages}}</a></li>
+						{% else %}
+							<li><a href="?page={{pages}}">{{pages}}</a></li>
+						{% endif %}
+					{% endfor %}
+					{% if page_obj.has_next %}
+						<li><a href="?page= {{ page_obj.next_page_number }}">Next</a></li>
+					{% else %}
+						<li class="disabled"></li>
+					{% endif %}
+				</ul>
+			</nav>
+		{% endif %}
+	</section>
+
+</main>
+
+
+
+{% endblock body %}

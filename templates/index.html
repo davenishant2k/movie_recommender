@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>Movie Recommender</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+	<!-- Link Swiper's CSS -->
+	<!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous"> -->
+	<link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+	<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	<link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap" rel="stylesheet">
+	<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+	<script src="{% static 'js/script.js' %}"></script>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<!-- Demo styles -->
+	<style>
+		article,
+		aside,
+		figure,
+		footer,
+		header,
+		hgroup,
+		menu,
+		nav,
+		section {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	{% if messages %}
+	{% for message in messages %}
+	<div id="hideMe" class="alert alert-{{ message.tags }}">
+		{{message}}
+	</div>
+	{% endfor %}
+	{% endif %}
+	<div class="wrapper">
+		<header class="header">
+			<figure class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo12.png' %}" alt="Logo"></figure></a>
+			<!-- 41*224 -->
+			<nav class="menu">
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a>Genres</a>
+                        <ul>
+							<li><a href="{% url 'movie:movie_genre' 'action' %}">Action</a></li>							
+						</ul>
+					</li>
+					<li><a>Year</a>
+						
+					</li>
+					<li><a>Language</a>
+						
+					</li>
+					
+				</ul>
+			</nav>
+		</header>
+		<!-- Swiper -->
+		<div class="homeslider">
+			<div class="swiper-container">
+				<div class="swiper-wrapper">
+					<div class="swiper-slide">
+						<img src="{% static 'images/slider/poster2.jpg' %}">
+						<div class="caption">
+							<div class="captioninside">
+								<h3 style="font-family: 'Lemon', cursive;">"Music can change the world because it can change people."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Bono</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="{% static 'images/slider/poster1.jpg' %}">
+						<div class="caption">
+							<div class="captioninside">
+								<h3 style="font-family: 'Lemon', cursive;">"Music and rhythm find their way into the secret places of the soul"</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Plato</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="{% static 'images/slider/poster3.jpg' %}">
+						<div class="caption">
+							<div class="captioninside">
+								<h3 style="font-family: 'Lemon', cursive;">"People haven’t always been there for me but music always has"</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Taylor Swift</p>
+							</div>
+						</div>
+					</div>
+					<div class="swiper-slide">
+						<img src="{% static 'images/slider/poster4.jpg' %}">
+						<div class="caption">
+							<div class="captioninside">
+								<strong></strong>
+								<h3 style="font-family: 'Lemon', cursive;">"Music is the divine way to tell beautiful, poetic things to the heart."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Pablo Casals</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Add Pagination -->
+				<div class="swiper-pagination"></div>
+			</div>
+		</div>
+
+
+		{% block body %}
+		{% endblock body %}
+
+		<footer class="footer">
+			<div class="copyright">
+				<p>Copyright &copy 2020 Musify</p>
+			</div>
+			<div class="footermenu">
+				<ul>
+					<li><a href="{% url 'home' %}">Home</a></li>
+					<li><a href="{}">Contact</a></li>
+					<li><a href="{}">Terms and conditions</a></li>
+				</ul>
+			</div>
+			<div class="tags">
+				<ul>
+					<li>Watch Free Music Covers</li>
+					<li>Music Cover</li>
+					<li>Latest Music Covers</li>
+					<li>New Music Covers</li>
+				</ul>
+			</div>
+
+		</footer>
+		<!-- Swiper JS -->
+		<script src="{% static 'js/swiper.min.js' %}"></script>
+		<!-- Initialize Swiper -->
+		<script>
+			$(document).ready(function() {
+				var swiper = new Swiper('.homeslider > .swiper-container', {
+					autoplay: 5000,
+					speed: 2000,
+					pagination: '.swiper-pagination',
+					paginationClickable: true,
+					preventClicks: false,
+					preventClicksPropagation: false,
+					effect: 'fade',
+					breakpoints: {
+						320: {
+							height: 200
+						},
+
+						480: {
+							height: 300
+						},
+
+						768: {
+							height: 400
+						},
+						1024: {
+							height: 500
+						}
+					}
+				});
+
+				var recentswiper = new Swiper('.recentslider > .swiper-container', {
+					nextButton: '.recent-next',
+					prevButton: '.recent-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks: false,
+					preventClicksPropagation: false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+				var mostswiper = new Swiper('.mostslider > .swiper-container', {
+					nextButton: '.most-next',
+					prevButton: '.most-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks: false,
+					preventClicksPropagation: false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+				var topswiper = new Swiper('.topslider > .swiper-container', {
+					nextButton: '.top-next',
+					prevButton: '.top-prev',
+					slidesPerView: 8,
+					paginationClickable: true,
+					preventClicks: false,
+					preventClicksPropagation: false,
+					spaceBetween: 10,
+					breakpoints: {
+						320: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						480: {
+							slidesPerView: 3,
+							spaceBetween: 5
+						},
+
+						768: {
+							slidesPerView: 5,
+							spaceBetween: 5
+						},
+						1024: {
+							slidesPerView: 6,
+							spaceBetween: 10
+						}
+					}
+				});
+
+			});
+		</script>
+	</div>
+</body>
+
+</html>

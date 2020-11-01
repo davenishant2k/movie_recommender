@@ -23,4 +23,6 @@ from movie_app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name = 'home'),
+    path('movie_app', include('movie_app.urls', namespace='movie')),
+
 ]

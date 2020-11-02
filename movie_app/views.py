@@ -18,3 +18,16 @@ class MovieGenre(ListView):
         context = super(MovieGenre, self).get_context_data(**kwargs)
         context['movie_genre'] = self.genre
         return context
+
+class MovieDetail(DetailView):
+    model = Movie
+
+    def get_object(self):
+        object = super(MovieDetail, self).get_object()
+        return object
+
+    def get_context_data(self, **kwargs):
+        context = super(MovieDetail, self).get_context_data(**kwargs)
+        context['related_movie'] = Movie.objects.filter(
+            genre1=self.get_object().genre1)
+        return context

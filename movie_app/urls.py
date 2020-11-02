@@ -9,5 +9,5 @@ urlpatterns = [
     # path('search/', MusicSearch.as_view(), name = 'music_search'),
     # path('language/<str:lang>', MusicLanguage.as_view(), name = 'music_language'),
     path('genre/<str:genre>', MovieGenre.as_view(), name = 'movie_genre'),
-    # path('<slug:slug>', MusicDetail.as_view(), name = 'music_detail'),
+    path('<slug:slug>', MovieDetail.as_view(), name = 'movie_detail'),
 ]

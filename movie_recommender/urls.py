@@ -24,7 +24,7 @@ from movie_app.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name = 'home'),
-    path('movie_app', include('movie_app.urls', namespace='movie')),
+    path('movie/', include('movie_app.urls', namespace='movie')),
 
 ]
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -3,8 +3,8 @@
 <main class="content">
 	<div class="single">
 		<section class="related">
-			<h3>Movies in the same Genre</h3>
-			{% for movie in recommends %}
+			<h3>Recommended movies</h3>
+			{% for movie in movies %}
 			<div class="relatemovie">
 				<a href="{% url 'movie:movie_detail' movie.slug %}"><img src="{{movie.image.url}}"></a>
 				<a href="{% url 'movie:movie_detail' movie.slug %}"><span class="relatedname">{{movie.title}}</span></a>

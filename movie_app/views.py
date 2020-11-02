@@ -43,16 +43,15 @@ class RecommendListView(ListView):
         # user = get_object_or_404(User, username=self.kwargs.get('username'))
         # profile = Profile.objects.get(user=user)
         # history_model = ThroughModel.objects.filter(profile=profile).order_by('-date_viewed')
-        recommend_list = []
         # for obj in history_model:
         #     title = obj.movie.title
         self.title = self.kwargs['title']
         print(self.title)
-
+        recommend_list = []
         temp_list = recommend.get_recommendations(self.title)
         recommend_list.extend(temp_list)
         print(recommend_list)
-        return Movie.objects.filter(title__in=recommend_list).order_by('-imdbrating')
+        return Movie.objects.filter(title__in=recommend_list)
 
     # def get_queryset(self):
     #     # user = get_object_or_404(User, username=self.kwargs.get('username'))

@@ -41,14 +41,19 @@
 	{% endif %}
 	<div class="wrapper">
 		<header class="header">
-			<figure class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo12.png' %}" alt="Logo"></figure></a>
+			<figure class="logo"><a href="{% url 'home' %}"><img src="{% static 'img/logo3.png' %}" alt="Logo" style="width:50px;height:50px;"></figure></a>
 			<!-- 41*224 -->
 			<nav class="menu">
 				<ul>
 					<li><a href="{% url 'home' %}">Home</a></li>
 					<li><a>Genres</a>
                         <ul>
-							<li><a href="{% url 'movie:movie_genre' 'action' %}">Action</a></li>							
+							<li><a href="{% url 'movie:movie_genre' 'action' %}">Action</a></li>
+							<li><a href="{% url 'movie:movie_genre' 'adventure' %}">Adventure</a></li>
+							<li><a href="{% url 'movie:movie_genre' 'fantasy' %}">Fantasy</a></li>
+							<li><a href="{% url 'movie:movie_genre' 'romance' %}">Romance</a></li>
+							<li><a href="{% url 'movie:movie_genre' 'comedy' %}">Comedy</a></li>
+							<li><a href="{% url 'movie:movie_genre' 'science_fiction' %}">Sci Fi</a></li>							
 						</ul>
 					</li>
 					<li><a>Year</a>
@@ -69,8 +74,8 @@
 						<img src="{% static 'images/slider/poster2.jpg' %}">
 						<div class="caption">
 							<div class="captioninside">
-								<h3 style="font-family: 'Lemon', cursive;">"Music can change the world because it can change people."</h3>
-								<p style="font-family: 'Lemonada', cursive;">-Bono</p>
+								<h3 style="font-family: 'Lemon', cursive;">"No good movie is too long and no bad movie is short enough."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Roger Ebert</p>
 							</div>
 						</div>
 					</div>
@@ -78,8 +83,8 @@
 						<img src="{% static 'images/slider/poster1.jpg' %}">
 						<div class="caption">
 							<div class="captioninside">
-								<h3 style="font-family: 'Lemon', cursive;">"Music and rhythm find their way into the secret places of the soul"</h3>
-								<p style="font-family: 'Lemonada', cursive;">-Plato</p>
+								<h3 style="font-family: 'Lemon', cursive;">"Every great film should seem new every time you see it."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Roger Ebert</p>
 							</div>
 						</div>
 					</div>
@@ -87,8 +92,8 @@
 						<img src="{% static 'images/slider/poster3.jpg' %}">
 						<div class="caption">
 							<div class="captioninside">
-								<h3 style="font-family: 'Lemon', cursive;">"People haven’t always been there for me but music always has"</h3>
-								<p style="font-family: 'Lemonada', cursive;">-Taylor Swift</p>
+								<h3 style="font-family: 'Lemon', cursive;">"Art is the closest we can come to understanding how a stranger really feels."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Roger Ebert</p>
 							</div>
 						</div>
 					</div>
@@ -97,8 +102,8 @@
 						<div class="caption">
 							<div class="captioninside">
 								<strong></strong>
-								<h3 style="font-family: 'Lemon', cursive;">"Music is the divine way to tell beautiful, poetic things to the heart."</h3>
-								<p style="font-family: 'Lemonada', cursive;">-Pablo Casals</p>
+								<h3 style="font-family: 'Lemon', cursive;">"Most of us do not consciously look at movies."</h3>
+								<p style="font-family: 'Lemonada', cursive;">-Roger Ebert</p>
 							</div>
 						</div>
 					</div>

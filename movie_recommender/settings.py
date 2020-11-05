@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'movie_app',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+LOGIN_REDIRECT_URL = '/home'

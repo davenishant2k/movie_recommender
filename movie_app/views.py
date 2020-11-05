@@ -2,11 +2,28 @@ import recommend
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import *
+from django.contrib.auth import login, authenticate
+from .forms import *
 # Create your views here.
 
 def home(request):
     return render(request, 'home.html')
 
+def login(request):
+    return render(request, 'movie_app/login.html')
+
+def register(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            messages.success(request, f'Your account has been created! You are now able to log in')
+            return redirect('login')
+
+    else:
+        form = UserRegisterForm()
+    return render(request, 'movie_app/register.html', {'form': form})
 
 class MovieDetail(DetailView):
     model = Movie
@@ -40,15 +57,11 @@ class MovieGenre(ListView):
 ## MACHINE LEARNING PART
 class RecommendListView(ListView):
     model = Movie
-    template_name = 'recommendations.html'
+    template_name = 'movie_app/recommendations.html'
     context_object_name = 'movies'
     # paginate_by = 6
     def get_queryset(self):
-        # user = get_object_or_404(User, username=self.kwargs.get('username'))
-        # profile = Profile.objects.get(user=user)
-        # history_model = ThroughModel.objects.filter(profile=profile).order_by('-date_viewed')
-        # for obj in history_model:
-        #     title = obj.movie.title
+        
         self.title = self.kwargs['title']
         print(self.title)
         recommend_list = []
@@ -57,23 +70,3 @@ class RecommendListView(ListView):
         print(recommend_list)
         return Movie.objects.filter(title__in=recommend_list)
 
-    # def get_queryset(self):
-    #     # user = get_object_or_404(User, username=self.kwargs.get('username'))
-    #     # profile = Profile.objects.get(user=user)
-    #     # history_model = ThroughModel.objects.filter(profile=profile).order_by('-date_viewed')
-    #     recommend_list = []
-    #     # for obj in history_model:
-    #     #     title = obj.movie.title
-    #     self.title = self.kwargs['title']
-    #     print(self.title)
-
-    #     temp_list = recommend.get_recommendations(self.title)
-    #     recommend_list.extend(temp_list)
-    #     print(recommend_list)
-    #     return Movie.objects.filter(title__in=recommend_list).order_by('-imdbrating')
-        
-    # def get_context_data(self, **kwargs):
-    #     context = super(RecommendListView, self).get_context_data(**kwargs)
-    #     context['recommends'] = self.title
-    #     return context
-    

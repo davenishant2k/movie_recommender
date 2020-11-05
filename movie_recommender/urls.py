@@ -23,9 +23,11 @@ from movie_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name = 'home'),
+    path('home/', home, name = 'home'),
     path('movie/', include('movie_app.urls', namespace='movie')),
-
+    path('register/', register, name = 'register'),
+    path('', auth_views.LoginView.as_view(template_name = 'movie_app/login.html'), name = 'login'),
+    path('logout/', auth_views.LogoutView.as_view(template_name = 'movie_app/logout.html'), name = 'logout'),
 ]
 urlpatterns+= static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns+= static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

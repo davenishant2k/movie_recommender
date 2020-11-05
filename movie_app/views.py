@@ -26,8 +26,12 @@ class MovieGenre(ListView):
     paginate_by = 5
 
     def get_queryset(self):
+        lst=[]
         self.genre = self.kwargs['genre']
-        return Movie.objects.filter(genre1=self.genre)
+        qs1 = Movie.objects.filter(genre1=self.genre)
+        qs2 = Movie.objects.filter(genre2=self.genre)
+        qs3 = Movie.objects.filter(genre3=self.genre)
+        return  qs1.union(qs2,qs3)
 
     def get_context_data(self, **kwargs):
         context = super(MovieGenre, self).get_context_data(**kwargs)

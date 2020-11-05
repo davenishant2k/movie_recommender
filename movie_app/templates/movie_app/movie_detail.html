@@ -12,7 +12,13 @@
 			<ul>
 				<li>{{object}}</li>
 				<li>{{object.description}}</li>
-				<li><a href="{% url 'movie:movie_genre' object.genre1 %}">{{object.genre1.title}}</a>
+				<li><a href="{% url 'movie:movie_genre' object.genre1 %}">{{object.genre1}}</a>
+					{% if object.genre2 %}
+					| <a href="{% url 'movie:movie_genre' object.genre2 %}">{{object.genre2}}</a>
+					{% endif %}
+					{% if object.genre3 %}
+					| <a href="{% url 'movie:movie_genre' object.genre3 %}">{{object.genre3}}</a>
+					{% endif %}
 				<li><a href="">Cast: {{object.cast}}</a></li>
 				<li>IMDB Rating: {{object.imdbrating}}</li>
 			</ul>

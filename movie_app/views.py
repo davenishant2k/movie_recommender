@@ -74,3 +74,20 @@ class RecommendListView(ListView):
         r.save()
         return Movie.objects.filter(title__in=recommend_list)
 
+
+class MyRecommendView(ListView):
+    model = MyRecommender
+    template_name = 'movie_app/myrecommmender_list.html'
+    context_object_name = 'movies'
+    #paginate_by = 5
+
+    def get_queryset(self):
+        lst=[]
+        self.username = self.kwargs['username']
+        qs1 = MyRecommender.objects.filter(user_name=self.username)
+        print(qs1)
+        return  qs1
+    def get_context_data(self, **kwargs):
+        context = super(MyRecommendView, self).get_context_data(**kwargs)
+        context['username'] = self.username
+        return context

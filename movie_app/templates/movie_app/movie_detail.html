@@ -24,7 +24,7 @@
 			</ul>
 		</section>
 		<section class="links">
-			<a href="{% url 'movie:movie_recommend' object.title %}">Recommend me movies based on this movie</a>
+			<a href="{% url 'movie:movie_recommend' user.username object.title %}">Recommend me movies based on this movie</a>
 		</section>
 
 		<section class="related">

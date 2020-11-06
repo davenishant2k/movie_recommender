@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
+from django_mysql.models import ListCharField
+from django.db.models import CharField
 # Create your models here.
 
 GENRE_CHOICES = (
@@ -31,3 +33,8 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class MyRecommender(models.Model):
+        movie_name = ListCharField(base_field=CharField(max_length=100),max_length=(6*100))
+        user_name =  models.CharField(max_length = 100)

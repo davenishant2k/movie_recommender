@@ -56,17 +56,21 @@ class MovieGenre(ListView):
         return context
 ## MACHINE LEARNING PART
 class RecommendListView(ListView):
-    model = Movie
+    model = Movie,MyRecommender
     template_name = 'movie_app/recommendations.html'
     context_object_name = 'movies'
     # paginate_by = 6
     def get_queryset(self):
         
         self.title = self.kwargs['title']
-        print(self.title)
+        self.username = self.kwargs['username']
+        # print(self.title)
+        # print(self.username)
         recommend_list = []
         temp_list = recommend.get_recommendations(self.title)
         recommend_list.extend(temp_list)
         print(recommend_list)
+        r = MyRecommender(user_name=self.username, movie_name=recommend_list)
+        r.save()
         return Movie.objects.filter(title__in=recommend_list)
 

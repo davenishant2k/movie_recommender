@@ -86,6 +86,7 @@ class MyRecommendView(ListView):
         self.username = self.kwargs['username']
         qs1 = MyRecommender.objects.filter(user_name=self.username)
         print(qs1)
+        print(qs1[0]['movie_name'])
         return  qs1
     def get_context_data(self, **kwargs):
         context = super(MyRecommendView, self).get_context_data(**kwargs)

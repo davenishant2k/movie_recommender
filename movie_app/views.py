@@ -69,8 +69,8 @@ class RecommendListView(ListView):
         recommend_list = []
         temp_list = recommend.get_recommendations(self.title)
         recommend_list.extend(temp_list)
-        print(recommend_list)
-        r = MyRecommender(user_name=self.username, movie_name=recommend_list)
+        #print(recommend_list)
+        r = MyRecommender(user_name=self.username, movie_name=recommend_list, liked_movie=self.title)
         r.save()
         return Movie.objects.filter(title__in=recommend_list)
 
@@ -85,9 +85,23 @@ class MyRecommendView(ListView):
         lst=[]
         self.username = self.kwargs['username']
         qs1 = MyRecommender.objects.filter(user_name=self.username)
-        print(qs1)
-        return  qs1
-    def get_context_data(self, **kwargs):
-        context = super(MyRecommendView, self).get_context_data(**kwargs)
-        context['username'] = self.username
-        return context
+        for p in qs1:
+            for x in p.movie_name:
+                lst.append(x)
+        print(lst)
+        return Movie.objects.filter(title__in=lst)
+
+class MyLikedView(ListView):
+    model = MyRecommender
+    template_name = 'movie_app/myliked_list.html'
+    context_object_name = 'movies'
+    #paginate_by = 5
+
+    def get_queryset(self):
+        lst=[]
+        self.username = self.kwargs['username']
+        qs1 = MyRecommender.objects.filter(user_name=self.username)
+        for p in qs1:
+            lst.append(p.liked_movie)
+        print(lst)
+        return Movie.objects.filter(title__in=lst)

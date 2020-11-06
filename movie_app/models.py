@@ -38,3 +38,4 @@ class Movie(models.Model):
 class MyRecommender(models.Model):
         movie_name = ListCharField(base_field=CharField(max_length=100),max_length=(6*100))
         user_name =  models.CharField(max_length = 100)
+        liked_movie = models.CharField(max_length = 100)

@@ -3,6 +3,7 @@ from django.utils.text import slugify
 from django.utils import timezone
 from django_mysql.models import ListCharField
 from django.db.models import CharField
+from datetime import date
 # Create your models here.
 
 GENRE_CHOICES = (
@@ -23,6 +24,8 @@ class Movie(models.Model):
     genre2 = models.CharField(choices = GENRE_CHOICES, max_length = 40,blank=True)
     genre3 = models.CharField(choices = GENRE_CHOICES, max_length = 40,blank=True)
     imdbrating = models.FloatField(default=0)
+    box_office = models.FloatField(default=0)
+    year_of_release = models.DateField(default=date.today)
 
     slug = models.SlugField(blank = True, null = True)
 

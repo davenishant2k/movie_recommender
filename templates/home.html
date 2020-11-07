@@ -5,4 +5,23 @@
 <!--<section class="panel">
 <h2>Hey</h2>
 </section>-->
+<section class="panel">
+    <h2>Top Rated Movies</h2>
+    <div class="topslider">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          {% for movie in top_rated %}
+          <div class="swiper-slide"><a href="{% url 'movie:movie_detail' movie.slug %}"><img src="{{movie.image.url}}">
+              <h3 class="hometitle">{{movie.title}} <br>IMDB Rating: {{movie.imdbrating}}/10 </h3>
+            </a></div>
+          {% endfor %}
+          <div class="swiper-slide"><a href="{% url 'movie:movie_list' %}"><img src="{% static 'img/others.png' %}"></a></div>
+        </div>
+        <div class="nextdirection top-next" style="height: 9.7rem"><img src="{% static 'img/right-arrow.svg' %}"> </div>
+        <div class="leftdirection top-prev"><img src="{% static 'img/left-arrow.svg' %}"> </div>
+        <!-- Add Pagination -->
+      </div>
+    </div>
+  </section>
+
 {% endblock body %}

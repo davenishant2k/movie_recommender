@@ -6,8 +6,19 @@ from django.contrib.auth import login, authenticate
 from .forms import *
 # Create your views here.
 
-def home(request):
-    return render(request, 'home.html')
+class MovieList(ListView):
+    model = Movie
+    paginate_by = 5
+
+class HomeView(ListView):
+    model = Movie
+    template_name = 'home.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(HomeView, self).get_context_data(**kwargs)
+        context['top_rated'] = Movie.objects.all().order_by('-imdbrating')
+        return context
+
 
 def login(request):
     return render(request, 'movie_app/login.html')

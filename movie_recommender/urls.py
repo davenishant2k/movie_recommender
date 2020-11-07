@@ -23,7 +23,7 @@ from movie_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home, name = 'home'),
+    path('home/', HomeView.as_view(), name = 'home'),
     path('movie/', include('movie_app.urls', namespace='movie')),
     path('register/', register, name = 'register'),
     path('', auth_views.LoginView.as_view(template_name = 'movie_app/login.html'), name = 'login'),

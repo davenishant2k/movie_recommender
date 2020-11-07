@@ -17,6 +17,8 @@ class HomeView(ListView):
     def get_context_data(self, **kwargs):
         context = super(HomeView, self).get_context_data(**kwargs)
         context['top_rated'] = Movie.objects.all().order_by('-imdbrating')
+        context['year_of_release'] = Movie.objects.all().order_by('-year_of_release')
+        context['box_office'] = Movie.objects.all().order_by('-box_office')
         return context
 
 

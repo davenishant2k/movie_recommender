@@ -11,9 +11,11 @@
 				<a href="{% url 'movie:movie_detail' movie.slug %}"><span class="relatedname">{{movie.title}}</span></a>
 			</div>
 			{% empty %}
-			<h3>PARTH MADARCHOD!</h3>
+			<h3>Sorry, no recommendations found</h3>
 			{% endfor %}
 		</section>
+
+		
 
 	</div>
 </main>

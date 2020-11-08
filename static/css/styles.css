@@ -328,6 +328,7 @@ body {
   z-index: 999;
   color: #fff;
   cursor: pointer;
+  height: auto;
 }
 
 .nextdirection img {
@@ -339,7 +340,6 @@ body {
 .leftdirection {
   position: absolute;
   left: 0;
-  height: 9.7rem;
   top: 0;
   width: 40px;
   bottom: 0;
@@ -347,6 +347,7 @@ body {
   z-index: 999;
   color: #fff;
   cursor: pointer;
+  height: auto;
 }
 
 .leftdirection img {

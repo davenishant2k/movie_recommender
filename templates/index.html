@@ -61,6 +61,16 @@
 					<li><a href="{% url 'movie:my_liked' user.username %}">Liked Movies</a>
 						
 					</li>
+					<li class="mobsearch">
+						<form class="mobform" method="GET">
+							<input type="text" name="query" value="{{ request.GET.q }}" class="mobsearchfield" placeholder="Search...">
+							<input type="submit" value="" class="mobsearchsubmit">
+						</form>
+					</li>
+					<form class="search" method="GET" action="{% url 'movie:movie_search' %}">
+						<input type="text" name="query" value="{{ request.GET.q }}" class="searchfield" placeholder="Search...">
+						<input type="submit" value="" class="searchsubmit">
+					</form>
 					
 				</ul>
 			</nav>

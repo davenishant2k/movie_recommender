@@ -5,6 +5,7 @@ app_name = 'movie'
 
 urlpatterns = [
     path('', MovieList.as_view(), name = 'movie_list'),
+    path('search/', MovieSearch.as_view(), name = 'movie_search'),
     path('genre/<str:genre>', MovieGenre.as_view(), name ='movie_genre'),
     path('<slug:slug>', MovieDetail.as_view(), name = 'movie_detail'),
     path('recommend/<str:username>/<str:title>', RecommendListView.as_view(), name = 'movie_recommend'),

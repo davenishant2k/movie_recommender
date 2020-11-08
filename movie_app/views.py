@@ -21,6 +21,17 @@ class HomeView(ListView):
         context['box_office'] = Movie.objects.all().order_by('-box_office')
         return context
 
+class MovieSearch(ListView):
+    model = Movie
+    paginate_by = 5
+
+    def get_queryset(self):
+        query = self.request.GET.get('query')
+        if query:
+            object_list = self.model.objects.filter(title__icontains=query)
+        else:
+            object_list = self.model.objects.none()
+        return object_list
 
 def login(request):
     return render(request, 'movie_app/login.html')

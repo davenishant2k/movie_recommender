@@ -49,6 +49,7 @@ class MovieDetail(DetailView):
         context = super(MovieDetail, self).get_context_data(**kwargs)
         context['related_movie'] = Movie.objects.filter(
             genre1=self.get_object().genre1)
+        context['genre'] = self.get_object().genre1                             
         return context
 
 class MovieGenre(ListView):

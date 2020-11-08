@@ -26,6 +26,7 @@ urlpatterns = [
     path('home/', HomeView.as_view(), name = 'home'),
     path('movie/', include('movie_app.urls', namespace='movie')),
     path('register/', register, name = 'register'),
+    path('accounts/', include('allauth.urls')),
     path('', auth_views.LoginView.as_view(template_name = 'movie_app/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'movie_app/logout.html'), name = 'logout'),
 ]

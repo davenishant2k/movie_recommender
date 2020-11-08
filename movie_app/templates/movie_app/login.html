@@ -1,5 +1,5 @@
 {% load crispy_forms_tags %}
-
+{% load socialaccount %}
 
 {% load static %}
 
@@ -84,7 +84,11 @@
                 </span>
               </div>
 
-              
+              <div class="flex-c-m">
+                <a href="{% provider_login_url 'google' method='js_sdk'%}" class="login100-social-item bg3">
+                  <i class="fa fa-google"></i>
+                </a>
+              </div>
 
               <div class="flex-col-c p-t-20">
 

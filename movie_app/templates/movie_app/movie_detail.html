@@ -1,5 +1,23 @@
 {% extends 'index.html' %}
 {% block body %}
+<style>
+	.button {
+	  background-color: #f4511e;
+	  border: none;
+	  color: white;
+	  padding: 16px 32px;
+	  text-align: center;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  opacity: 1;
+	  transition: 0.3s;
+	  display: inline-block;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.button:hover {opacity: 0.6}
+	</style>
 <main class="content">
 	<div class="single">
 
@@ -23,9 +41,11 @@
 				<li>IMDB Rating: {{object.imdbrating}}</li>
 			</ul>
 		</section>
-		<section class="links">
-			<a style="color: rgba(205, 241, 0, 0.925);" href="{% url 'movie:movie_recommend' user.username object.title %}">I Liked this! Recommend me more...</a>
-		</section>
+		<div style="margin-top: 20px;">
+			<a href="{% url 'movie:movie_recommend' user.username object.title %}"><button style="margin-top: 35px;" class="button">I Liked this, Recommend me more!</button></a>
+		</div>
+			<br>
+			<br>
 
 		<section class="related">
 			<h3>Movies in the {{genre.title}} Genre</h3>
@@ -39,4 +59,5 @@
 
 	</div>
 </main>
+
 {% endblock body %}

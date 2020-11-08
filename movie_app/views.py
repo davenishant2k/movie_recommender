@@ -130,3 +130,9 @@ class MyLikedView(ListView):
             lst.append(p.liked_movie)
         print(lst)
         return Movie.objects.filter(title__in=lst)
+
+def contact(request):
+    return render(request, 'contact.html')
+
+def about_us(request):
+    return render(request, 'about_us.html')

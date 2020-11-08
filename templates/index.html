@@ -71,8 +71,11 @@
 						<input type="text" name="query" value="{{ request.GET.q }}" class="searchfield" placeholder="Search...">
 						<input type="submit" value="" class="searchsubmit">
 					</form>
-					
+					<li class="navbar-nav" style="position: absolute; right: 100px;"><a>Welcome, {{user.username}}</a></li>
+					<li class="navbar-nav" style="position: absolute; right: 20px;"><a href="{% url 'logout' %}">Logout</a></li>
+				
 				</ul>
+				
 			</nav>
 		</header>
 		<!-- Swiper -->
@@ -128,21 +131,22 @@
 
 		<footer class="footer">
 			<div class="copyright">
-				<p>Copyright &copy 2020 Musify</p>
+				<p>Copyright &copy 2020 What2Watch</p>
 			</div>
 			<div class="footermenu">
 				<ul>
 					<li><a href="{% url 'home' %}">Home</a></li>
-					<li><a href="{}">Contact</a></li>
-					<li><a href="{}">Terms and conditions</a></li>
+					<li><a href="{% url 'about_us' %}">About Us</a></li>
+					<li><a href="{% url 'contact' %}">Have Queries?</a></li>
+
 				</ul>
 			</div>
 			<div class="tags">
 				<ul>
-					<li>Watch Free Music Covers</li>
-					<li>Music Cover</li>
-					<li>Latest Music Covers</li>
-					<li>New Music Covers</li>
+					<li>Discover Movies</li>
+					<li>Movie Recommendations</li>
+					<li>Search Movies</li>
+					<li>Your Favourites</li>
 				</ul>
 			</div>
 

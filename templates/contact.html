@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+		<main class="content">
+			<section class="centered">
+				<h3>Have any queries? Write to us:</h3>
+				<div class="contact">
+					<form id="myForm" action="mailto:davenishant2k@gmail.com" method="POST" enctype="text/plain">
+						<label for="name">Name:</label>
+						<input type="text" name="name" id="name">
+
+						<label for="email">Email:</label>
+						<input type="email" name="email" id="email">
+
+						<label for="message">Message:</label>
+						<textarea id="message" name="message"></textarea>
+
+						<input type="submit" name="submit" value="SEND">
+					</form>
+
+			
+				</div>
+		</section>
+
+	</main>
+
+	{% endblock body %}

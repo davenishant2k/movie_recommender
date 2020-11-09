@@ -48,7 +48,14 @@
       <nav class="menu">
 
       </nav>
-      
+      {% if messages %}
+        {% for message in messages %}
+      <!-- portfolio costruction and analysys python -->
+          <div class="alert alert-{{ message.tags }}">
+            {{message}}
+          </div>
+          {% endfor %}
+      {% endif %}
       <div class="toggle"><img src="{% static 'img/menu.svg' %}"></div>
 
       <div class="limiter">

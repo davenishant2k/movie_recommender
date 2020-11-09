@@ -1,9 +1,11 @@
 import recommend
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from .models import *
 from django.contrib.auth import login, authenticate
 from .forms import *
+from django.contrib import messages
+
 # Create your views here.
 
 class MovieList(ListView):
@@ -40,10 +42,13 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Your account has been created! You are now able to log in')
-            return redirect('login')
+            if User.objects.filter(email=form.cleaned_data['email']).exists():
+                messages.error(request,'Email already exists')
+            else:
+                form.save()
+                username = form.cleaned_data.get('username')
+                messages.success(request, f'Your account has been created! You are now able to log in')
+                return redirect('login')
 
     else:
         form = UserRegisterForm()

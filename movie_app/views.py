@@ -141,3 +141,18 @@ def contact(request):
 
 def about_us(request):
     return render(request, 'about_us.html')
+
+def AddMovie_admin(request):
+    if request.method == 'POST':
+        form = MovieForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            form.save()
+            return redirect('add_movie_submission')
+
+    else:
+        form = MovieForm()
+    return render(request, 'add_admin.html', {'form' : form})
+
+def add_movie_submission(request):
+    return render(request, 'add_movie_submission.html')

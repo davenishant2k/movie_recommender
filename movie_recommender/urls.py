@@ -28,6 +28,8 @@ urlpatterns = [
     path('register/', register, name = 'register'),
     path('accounts/', include('allauth.urls')),
     path('contact/', contact, name = 'contact'),
+    path('add_admin/', AddMovie_admin, name='add_admin'),
+    path('add_movie_submission/', add_movie_submission, name='add_movie_submission'),
     path('about_us/', about_us, name = 'about_us'),
     path('', auth_views.LoginView.as_view(template_name = 'movie_app/login.html'), name = 'login'),
     path('logout/', auth_views.LogoutView.as_view(template_name = 'movie_app/logout.html'), name = 'logout'),

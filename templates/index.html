@@ -66,7 +66,13 @@
 						<input type="text" name="query" value="{{ request.GET.q }}" class="searchfield" placeholder="Search...">
 						<input type="submit" value="" class="searchsubmit">
 					</form>
+					
+					{% if user.is_superuser %}
+					<li class="navbar-nav" style="position: absolute; right: 190px;"><a>Welcome, {{user.username}}</a></li>
+					<li style="position: absolute; right:100px; color:white;"><a href="{% url 'add_admin' %}">Add Movie</a></li>
+					{% else %}
 					<li class="navbar-nav" style="position: absolute; right: 100px;"><a>Welcome, {{user.username}}</a></li>
+					{% endif %}
 					<li class="navbar-nav" style="position: absolute; right: 20px;"><a href="{% url 'logout' %}">Logout</a></li>
 				
 				</ul>

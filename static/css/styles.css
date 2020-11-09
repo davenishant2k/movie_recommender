@@ -768,7 +768,7 @@ body {
   margin-bottom: 20px;
   border: none;
   outline: none;
-  background-color: #cecece;
+  background-color: white;
 }
 #myForm input[type='email'] {
   float: left;
@@ -777,7 +777,7 @@ body {
   margin-bottom: 20px;
   border: none;
   outline: none;
-  background-color: #cecece;
+  background-color: white;
 }
 
 #myForm textarea {
@@ -788,7 +788,7 @@ body {
   margin-bottom: 10px;
   height: 150px;
   outline: none;
-  background-color: #cecece;
+  background-color: white;
 }
 
 #myForm label {
@@ -807,7 +807,7 @@ body {
   margin-top: 20px;
   color: #fff;
   border: none;
-  background-color: #c22026;
+  background-color: #f4511e;
   outline: none;
   cursor: pointer;
 }

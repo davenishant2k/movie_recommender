@@ -60,18 +60,26 @@
 		</section>
 
 		<section class="related">
+			<h3 style="color: cyan;">All Comments</h3>
+			<div  class="comments" style="padding: 10px;">
 		{% for comment in comments %}
-        <div class="comments" style="padding: 10px;">
+		
+        
           <p class="font-weight-bold" style="color: orange;">
             {{ comment.name }}
             <span class=" text-muted font-weight-normal">
               {{ comment.created_on }}
             </span>
-          </p>
-          <p style="color: greenyellow;">{{ comment.body}}</p>
-        </div>
+		  </p>
+			<p class="dialogbox">
+				<span class=" tip tip-up"></span>
+				  <span  class="message">{{ comment.body}}</span>
+			
+				<!-- <p style="color: greenyellow;">{{ comment.body}}</p> -->
+			</p>
+		
         {% endfor %}
-
+			</div>
 		<div class="card-body">
 			{% if new_comment %}
 			<div class="alert alert-success" role="alert">

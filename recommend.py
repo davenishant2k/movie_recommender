@@ -144,7 +144,6 @@ indices = pd.Series(df2.index, index=df2['title'])
 
 # Function that takes in movie title as input and outputs most similar movies
 def get_recommendations(title):
-    print(title)
     cosine_sim=getCosine()
     # Get the index of the movie that matches the title
     idx = indices[title]
@@ -156,7 +155,7 @@ def get_recommendations(title):
     sim_scores = sorted(sim_scores, key=lambda x: x[1], reverse=True)
 
     # Get the scores of the 10 most similar movies
-    sim_scores = sim_scores[1:11]
+    sim_scores = sim_scores[1:21]
 
     # Get the movie indices
     movie_indices = [i[0] for i in sim_scores]

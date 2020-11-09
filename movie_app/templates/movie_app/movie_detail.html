@@ -59,6 +59,36 @@
 			{% endfor %}
 		</section>
 
+		<section class="related">
+		{% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+          <p class="font-weight-bold" style="color: orange;">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+          </p>
+          <p style="color: greenyellow;">{{ comment.body}}</p>
+        </div>
+        {% endfor %}
+
+		<div class="card-body">
+			{% if new_comment %}
+			<div class="alert alert-success" role="alert">
+			  <p style="color: greenyellow;"> Your comment is awaiting moderation</p>
+			</div>
+			{% else %}
+			<h3 style="color: cyan;">Leave a comment !</h3>
+			<form id="myForm" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ comment_form.as_p }}
+				<input type="submit" name="submit" value="ADD COMMENT">
+			</form>
+			
+			{% endif %}
+		  </div>
+		</section>
+
 	</div>
 </main>
 

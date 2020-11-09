@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 
 class DateInput(forms.DateInput):
     input_type = 'date'
-    
+
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(required = False)
 
@@ -21,3 +21,8 @@ class MovieForm(forms.ModelForm):
         widgets = {
             'year_of_release': DateInput()
         }
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('name', 'email', 'body')

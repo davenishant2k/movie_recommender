@@ -42,3 +42,18 @@ class MyRecommender(models.Model):
         movie_name = ListCharField(base_field=CharField(max_length=100),max_length=(6*100))
         user_name =  models.CharField(max_length = 100)
         liked_movie = models.CharField(max_length = 100)
+
+
+class Comment(models.Model):
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, related_name="comments")
+    name = models.CharField(max_length=80)
+    email = models.EmailField()
+    body = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=False)
+
+    class Meta:
+        ordering = ["created_on"]
+
+    def __str__(self):
+        return "Comment {} by {}".format(self.body, self.name)

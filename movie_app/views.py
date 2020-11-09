@@ -1,5 +1,5 @@
 import recommend
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect,get_object_or_404
 from django.views.generic import ListView, DetailView
 from .models import *
 from django.contrib.auth import login, authenticate
@@ -54,19 +54,47 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'movie_app/register.html', {'form': form})
 
-class MovieDetail(DetailView):
-    model = Movie
+# class MovieDetail(DetailView):
+#     model = Movie
+    
+#     def get_object(self):
+#         object = super(MovieDetail, self).get_object()
+#         return object
 
-    def get_object(self):
-        object = super(MovieDetail, self).get_object()
-        return object
+#     def get_context_data(self, **kwargs):
+#         context = super(MovieDetail, self).get_context_data(**kwargs)
+#         context['related_movie'] = Movie.objects.filter(
+#             genre1=self.get_object().genre1)
+#         context['genre'] = self.get_object().genre1                             
+#         return context
 
-    def get_context_data(self, **kwargs):
-        context = super(MovieDetail, self).get_context_data(**kwargs)
-        context['related_movie'] = Movie.objects.filter(
-            genre1=self.get_object().genre1)
-        context['genre'] = self.get_object().genre1                             
-        return context
+def movie_detail(request, slug):
+    template_name = 'movie_app/movie_detail.html'
+    movie = get_object_or_404(Movie, slug=slug)
+    comments = movie.comments.filter(active=True)
+    new_comment = None
+    # Comment posted
+    if request.method == 'POST':
+        comment_form = CommentForm(data=request.POST)
+        if comment_form.is_valid():
+
+            # Create Comment object but don't save to database yet
+            new_comment = comment_form.save(commit=False)
+            # Assign the current post to the comment
+            new_comment.movie = movie
+            # Save the comment to the database
+            new_comment.save()
+    else:
+        comment_form = CommentForm()
+
+    a = Movie.objects.filter(genre1=movie.genre1)
+    b = movie.genre1
+    return render(request, template_name, {'object': movie,
+                                           'related_movie': a,
+                                           'genre' : b,
+                                           'comments': comments,
+                                           'new_comment': new_comment,
+                                           'comment_form': comment_form})
 
 class MovieGenre(ListView):
     model = Movie

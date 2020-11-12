@@ -639,6 +639,7 @@ body {
 }
 
 
+
 .comments h3 {
   float: left;
   padding: 0 10px;
@@ -795,37 +796,75 @@ body {
 
 #myForm {
   float: left;
-  width: 100%;
+  width: calc(100% - 20px);
+  padding-left: 1%;
+
 }
 
 #myForm input[type='text'] {
-  float: left;
+  /* float: left;
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 20px;
   border: none;
   outline: none;
-  background-color: white;
+  background-color: white; */
+  height: 25px;
+  font-size: medium;
+  width: calc(100% - 20px);
+  border: none;
+  border-bottom: 2px solid #aaa;
+  background-color: transparent;
+  margin-bottom: 10px;
+  resize: none;
+  outline: none;
+  transition: .5s;
+  caret-color: white;
+  color: white;
 }
 #myForm input[type='email'] {
-  float: left;
+  /* float: left;
   width: calc(100% - 20px);
   padding: 10px;
   margin-bottom: 20px;
   border: none;
   outline: none;
-  background-color: white;
+  background-color: white; */
+  height: 25px;
+  font-size: medium;
+  width: calc(100% - 20px);
+  border: none;
+  border-bottom: 2px solid #aaa;
+  background-color: transparent;
+  margin-bottom: 10px;
+  resize: none;
+  outline: none;
+  transition: .5s;
+  caret-color: white;
+  color: white;
 }
 
 #myForm textarea {
-  float: left;
+  /* float: left;
   width: calc(100% - 20px);
   padding: 10px;
   border: none;
   margin-bottom: 10px;
   height: 150px;
   outline: none;
-  background-color: white;
+  background-color: white; */
+  height: 25px;
+  font-size: 18px;
+  width: calc(100% - 20px);
+  border: none;
+  border-bottom: 2px solid #aaa;
+  background-color: transparent;
+  margin-bottom: 10px;
+  resize: none;
+  outline: none;
+  transition: .5s;
+  caret-color: white;
+  color: white;
 }
 
 #myForm label {
@@ -838,7 +877,7 @@ body {
 
 #myForm input[type='submit'] {
   float: left;
-  width: 100%;
+  /* width: 100%; */
   padding: 10px 10px;
   margin-bottom: 20px;
   margin-top: 20px;

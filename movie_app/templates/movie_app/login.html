@@ -1,0 +1,153 @@
+{% load crispy_forms_tags %}
+{% load socialaccount %}
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <title>Login</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--===============================================================================================-->
+  <!-- <link rel="icon" type="image/png" href="images/icons/favicon.ico"/> -->
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'fonts/iconic/css/material-design-iconic-font.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/animate/animate.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/css-hamburgers/hamburgers.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/animsition/css/animsition.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/select2/select2.min.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'vendor/daterangepicker/daterangepicker.css' %}">
+  <!--===============================================================================================-->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+  <!--===============================================================================================-->
+  <link rel="shortcut icon" href="{% static 'img/logo122.ico' %}">
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Lemon&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lemonada:wght@500&display=swap" rel="stylesheet">
+  <script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/script.js' %}"></script>
+</head>
+
+<body>
+  <div class="wrapper">
+    <header class="header">
+			<figure class="logo"><a style="text-decoration: none;"><img src="{% static 'img/logo122.jpeg' %}" alt="Logo" style=""><p style="color: white; position: relative; left:13px;bottom: 5px;">What2Watch</p></a></figure>
+      <!-- 41*224 -->
+      <nav class="menu">
+
+      </nav>
+      {% if messages %}
+        {% for message in messages %}
+      <!-- portfolio costruction and analysys python -->
+          <div class="alert alert-{{ message.tags }}">
+            {{message}}
+          </div>
+          {% endfor %}
+      {% endif %}
+      <div class="toggle"><img src="{% static 'img/menu.svg' %}"></div>
+
+      <div class="limiter">
+        <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+          <div class="wrap-login100 p-l-55 p-r-55 p-t-30 p-b-10">
+            <form id="myForm1" method="POST" class="login100-form validate-form">
+              <span class="login100-form-title p-b-30">
+                Login
+              </span>
+              {% csrf_token %}
+              {{form|crispy}}
+
+
+              <div class="text-right p-t-8 p-b-31">
+
+              </div>
+              <button class="login100-form-btn">
+                Login
+              </button>
+              <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                  <div class="login100-form-bgbtn"></div>
+                  <button class="login100-form-btn">
+                    Login
+                  </button>
+                </div>
+              </div>
+
+              <div class="txt1 text-center p-t-30 p-b-20">
+                <span>
+                  Or Login Using
+                </span>
+              </div>
+
+              <div class="flex-c-m">
+                <a href="{% provider_login_url 'google' method='js_sdk'%}" class="login100-social-item bg3">
+                  <i class="fa fa-google"></i>
+                </a>
+              </div>
+
+              <div class="flex-col-c p-t-20">
+
+                <a href="register/" class="txt2">
+                  <b>NEW HERE? REGISTER !</b>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <div id="dropDownSelect1"></div>
+
+
+      <footer class="footer">
+        <div class="copyright">
+          <p>Copyright &copy 2020 What2Watch</p>
+        </div>
+        <div class="footermenu">
+          <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">Terms and conditions</a></li>
+          </ul>
+        </div>
+        <div class="tags">
+          <ul>
+            <li>Discover Movies</li>
+            <li>Movie Recommendations</li>
+            <li>Search Movies</li>
+            <li>Your Favourites</li>
+        </div>
+
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/animsition/js/animsition.min.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/bootstrap/js/popper.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/select2/select2.min.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/daterangepicker/moment.min.js' %}"></script>
+        <script src="{% static 'vendor/daterangepicker/daterangepicker.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'vendor/countdowntime/countdowntime.js' %}"></script>
+        <!--===============================================================================================-->
+        <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

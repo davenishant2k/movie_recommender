@@ -1,0 +1,5 @@
+myvenv
+tmdb_5000_credits.csv
+tmdb_5000_movies.csv
+env
+db.sqlite3

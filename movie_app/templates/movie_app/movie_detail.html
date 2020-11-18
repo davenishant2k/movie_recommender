@@ -1,0 +1,102 @@
+{% extends 'index.html' %}
+{% block body %}
+<style>
+	.button {
+	  background-color: #f4511e;
+	  border: none;
+	  color: white;
+	  padding: 16px 32px;
+	  text-align: center;
+	  font-size: 16px;
+	  margin: 4px 2px;
+	  opacity: 1;
+	  transition: 0.3s;
+	  display: inline-block;
+	  text-decoration: none;
+	  cursor: pointer;
+	}
+	
+	.button:hover {opacity: 0.6}
+	</style>
+<main class="content">
+	<div class="single">
+
+		<section class="trailer">
+			<h3>Movies</h3>
+		</section>
+
+		<section class="movie">
+			<img src="{{object.image.url}}">
+			<ul>
+				<li>{{object}}</li>
+				<li>{{object.description}}</li>
+				<li><a style="color:#f4511e" href="{% url 'movie:movie_genre' object.genre1 %}">{{object.genre1.title}}</a>
+					{% if object.genre2 %}
+					| <a style="color:#f4511e" href="{% url 'movie:movie_genre' object.genre2 %}">{{object.genre2.title}}</a>
+					{% endif %}
+					{% if object.genre3 %}
+					| <a style="color:#f4511e" href="{% url 'movie:movie_genre' object.genre3 %}">{{object.genre3.title}}</a>
+					{% endif %}
+				<li><a style="color:#f4511e">Cast: {{object.cast}}</a></li>
+				<li>Release Date: {{object.year_of_release}}</li>
+				<li>Box Office Collection: ${{object.box_office}}M</li>
+				<li>IMDB Rating: {{object.imdbrating}}</li>
+			</ul>
+		</section>
+		<div style="margin-top: 20px;">
+			<a href="{% url 'movie:movie_recommend' user.username object.title %}"><button style="margin-top: 35px;" class="button">I Liked this, Recommend me more!</button></a>
+		</div>
+			<br>
+			<br>
+
+		<section class="related">
+			<h3>Movies in the {{genre.title}} Genre</h3>
+			{% for movie in related_movie %}
+			<div class="relatemovie">
+				<a href="{% url 'movie:movie_detail' movie.slug %}"><img src="{{movie.image.url}}"></a>
+				<a href="{% url 'movie:movie_detail' movie.slug %}"><span class="relatedname">{{movie.title}}</span></a>
+			</div>
+			{% endfor %}
+		</section>
+
+		<section class="related">
+			<h3 style="color: cyan;">All Comments</h3>
+			<div  class="comments" style="padding: 10px;">
+		{% for comment in comments %}
+		
+        
+          <p class="font-weight-bold" style="color: orange;">
+            {{ comment.name }}
+            <span class=" text-muted font-weight-normal">
+              {{ comment.created_on }}
+            </span>
+		  </p>
+			<p class="dialogbox">
+				<span class=" tip tip-up"></span>
+				  <span  class="message">{{ comment.body}}</span>
+			
+				<!-- <p style="color: greenyellow;">{{ comment.body}}</p> -->
+			</p>
+		
+        {% endfor %}
+			</div>
+		<div class="card-body">
+			{% if new_comment %}
+			<div class="alert alert-success" role="alert">
+			  <p style="color: greenyellow;"> Your comment is awaiting moderation</p>
+			</div>
+			{% else %}
+			<h3 style="color: cyan;">Leave a comment !</h3>
+			<form id="myForm" method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ comment_form.as_p }}
+				<input type="submit" name="submit" value="ADD COMMENT">
+			</form>
+			{% endif %}
+		  </div>
+		</section>
+
+	</div>
+</main>
+
+{% endblock body %}
